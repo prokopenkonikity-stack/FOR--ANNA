@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Вопрос 🙂</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: linear-gradient(135deg, #ffd6e8, #ffeef6);
+}
+
+h1 {
+  margin-top: 120px;
+  font-size: 38px;
+  color: #333;
+}
+
+button {
+  padding: 22px 60px;
+  font-size: 26px;
+  margin: 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 14px;
+  transition: transform 0.25s;
+}
+
+#yesBtn {
+  background: #ff5ca8;
+  color: white;
+}
+
+#noBtn {
+  background: #e0e0e0;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Пойдёшь со мной на свидание? 🙂</h1>
+
+<button id="yesBtn" onclick="yes()">Да</button>
+<button id="noBtn" onclick="no()">Нет</button>
+
+<script>
+let yesScale = 1;
+let noClicks = 0;
+
+function yes() {
+  document.body.innerHTML =
+  "<h1 style='margin-top:160px;font-size:46px;'>Я так и знал 😌</h1>";
+}
+
+function no() {
+  noClicks++;
+  yesScale += 0.35;
+
+  const yesBtn = document.getElementById("yesBtn");
+  yesBtn.style.transform = `scale(${yesScale})`;
+
+  if (noClicks === 1) {
+    yesBtn.innerText = "Может всё-таки да?";
+  }
+
+  if (noClicks === 2) {
+    yesBtn.innerText = "Ну пожалуйста 😄";
+  }
+
+  if (noClicks >= 3) {
+    document.getElementById("noBtn").style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
